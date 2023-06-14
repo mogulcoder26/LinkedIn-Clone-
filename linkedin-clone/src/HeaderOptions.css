@@ -1,0 +1,18 @@
+.headerOptions__icon{
+    /* margin-left: 10px; */
+    margin-right: 50px;
+    color: rgb(108, 107, 106);
+    height: 5px
+}
+
+.headerOptions__icon:hover{
+    color: rgb(134, 121, 121);
+    transition: 0.4s;
+}
+
+.header__Options > h3{
+    font-size: 10px;
+
+}
+
+
