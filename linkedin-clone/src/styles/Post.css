@@ -1,0 +1,38 @@
+.post{
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.post__header > .avatar{
+    background-color: cadetblue;
+    
+}
+.post__header{
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.post__info{
+    margin-left: 10px;
+}
+
+
+.post__info > p {
+    font-size: 15px;
+}
+ .post__body{
+    overflow-wrap: anywhere;
+    margin-top: 10px;
+    margin-left: 40px;
+    font-size: 20px;
+    font-weight:400;
+ }
+ .post__info > h2{
+    font-size: 15px;
+ }
+ .post__buttons{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-evenly;
+ }

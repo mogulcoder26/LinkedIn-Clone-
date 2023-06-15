@@ -1,1 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Arimo&family=Comfortaa:wght@500&family=Fasthand&family=Lora:ital,wght@0,600;1,500&family=Montserrat&family=Nanum+Gothic+Coding:wght@400;700&family=Open+Sans&family=Poppins:wght@200;500&family=Sacramento&family=Source+Code+Pro:wght@600&family=Ubuntu:wght@400;700&display=swap');
+.feed{
+    flex: 0.6;
+    margin: 0 20px;
+
+}
+
+.feed__inputContainer{
+    display: flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+    background-color: white;
+    padding: 10px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.feed__input{
+    border: 1px solid lightgray;
+    border-radius: 30px;
+    display: flex;
+    padding: 10px;
+    color: gray;
+    width:97%;
+    margin-bottom: 15px;
+}
+
+.feed__input > form{
+    display: flex; 
+    width: 100%;
+}
+
+.feed__input > form> input{
+
+    border: none;
+    outline-width: 0;
+    font-weight: 600;
+    flex: 1;
+}
+
+.feed__input > form> button{
+    display: none;
+}
