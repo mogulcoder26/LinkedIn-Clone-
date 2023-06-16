@@ -8,9 +8,9 @@ import { selectUser } from '../features/userSlice';
 function Sidebar() {
 
     const user = useSelector(selectUser);
-    
 
-  const recentItem = (topic) => {
+
+    const recentItem = (topic) => {
 
     return (<div className="sidebar__recentItem">
       <span className="sidebar__hash"><strong>#</strong></span>
@@ -25,9 +25,9 @@ function Sidebar() {
 
       <div className="sidebar__top">
         <img src="https://media.licdn.com/dms/image/C4E12AQH7C4CgOZ81hg/article-cover_image-shrink_600_2000/0/1520134478755?e=2147483647&v=beta&t=PIzPym48v_v1z_kjiPx3etQ741bV-UM3kNou0ZDfQvY" alt="BackGroundPic" />
-        <Avatar className="sidebar__avatar" />
-        <h2>Soubhik Gon</h2>
-        <h4>soubhikgon2004@gmail.com</h4>
+        <Avatar className="sidebar__avatar" src={user.photoURL}>{user.displayName[0]}</Avatar>
+        <h2>{user.displayName}</h2>
+        <h4>{user.email}</h4>
       </div>
 
       <div className="sidebar__stats">

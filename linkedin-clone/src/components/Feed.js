@@ -8,16 +8,23 @@ import EventIcon from '@mui/icons-material/Event';
 import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
 
 import Post from "./Post"; 
-import {db ,auth } from "../firebase";
+import {db} from "../firebase";
 // import firebase from "firebase";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { selectUser } from '../features/userSlice';
+import { useSelector } from 'react-redux';
+
 
 function Feed() {
+    
+    let [input,setInput] = useState('');
+    let [posts,setPosts] = useState([]);
+    
 
-let [input,setInput] = useState('');
-let [posts,setPosts] = useState([]);
+const user = useSelector(selectUser)
+
 
 useEffect(()=>{
     //Creating a connection to Firebase DB ...we take a snapshot and on every snapshot we map through each doc to  `setPosts` for it to set our `posts` array 
@@ -29,7 +36,6 @@ useEffect(()=>{
                 data:doc.data()
             }
         })) 
-
     })
 
 },[])
@@ -39,14 +45,16 @@ useEffect(()=>{
             e.preventDefault();
 
        db.collection("posts").add({
-            name:'Soubhik Gon',
-            description:'This is a test msg',
+            name:user.displayName,
+            description:user.email,
             message:input,
-            photoUrl:"",
+            photoUrl:user.photoURL,
             timestamp:firebase.firestore.FieldValue.serverTimestamp()
+        
         });
+
         setInput('')
-        }
+    }
 
     return (
         <div className='feed'>

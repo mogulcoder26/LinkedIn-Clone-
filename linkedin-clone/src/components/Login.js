@@ -29,36 +29,27 @@ function Login() {
                         dispatch(login({
                             email: userAuth.user.email,
                             uid: userAuth.user.uid,
-                            displayName: name,
-                            photoURL: profilePic
+                            displayName: userAuth.user.displayName,
+                            photoURL: userAuth.user.photoURL
                         }))
                     })
                     .catch(e => { alert(e) })
             })
     }
+
     const loginToApp = (e) => {
         e.preventDefault();
 
-        auth.signInWithEmailAndPassword(email,password)
-        .then((userAuth)=>{
-
-            dispatch(
-                login({
+        auth.signInWithEmailAndPassword(email, password)
+            .then((userAuth) => {
+                console.log(userAuth)
+                dispatch(login({
                     email:userAuth.user.email,
-                    uid  :userAuth.user.uid,
+                    uid:userAuth.user.uid,
                     displayName:userAuth.user.displayName,
-                    profileUrl:userAuth.user.photoURL
-                })
-            )
-
-
-
-        })
-
-
-
-
-
+                    photoURL:userAuth.user.photoURL
+                }))
+            }).catch(e=>alert(e))
     }
 
 
@@ -70,7 +61,7 @@ function Login() {
 
             <form >
                 <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder='Full Name (required if registering)' />
-                <input placeholder='Profile Pic URI (Optional)' type="text" />
+                <input placeholder='Profile Pic URI (Optional)' type="text" value={profilePic} onChange={e=>{setProfilePic(e.target.value)}} />
                 <input placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} type="email" />
                 <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder='password' />
                 <button type="submit" value={profilePic} onChange={e => setProfilePic(e.target.value)} onClick={loginToApp}>Sign in!</button>
