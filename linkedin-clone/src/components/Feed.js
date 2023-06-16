@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../styles/Feed.css"
 import CreateIcon from '@mui/icons-material/Create'
 import Button from '@mui/material/Button';
@@ -7,18 +7,48 @@ import ImageIcon from '@mui/icons-material/Image'
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions'
 import EventIcon from '@mui/icons-material/Event';
 import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
-import Post from "./Post"
+
+import Post from "./Post"; 
+import {db ,auth } from "../firebase";
+// import firebase from "firebase";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 function Feed() {
 
+let [input,setInput] = useState('');
+let [posts,setPosts] = useState([]);
 
-const [posts,setPosts] = useState([]);
+useEffect(()=>{
+    //Creating a connection to Firebase DB ...we take a snapshot and on every snapshot we map through each doc to  `setPosts` for it to set our `posts` array 
+    db.collection("posts").onSnapshot((snapshot) =>{
 
-    const sendPost =(e)=>{
+        setPosts(snapshot.docs.map(doc=>{
+            return {
+                id:doc.id,
+                data:doc.data()
+            }
+        }))
+    
+
+    })
+
+},[])
+
+
+    const sendPost = async (e)=>{
             e.preventDefault();
 
-            setPosts = ['hi',...posts]
-    }
+       await  db.collection("posts").add({
+            name:'Soubhik Gon',
+            description:'This is a test msg',
+            message:input,
+            photoUrl:"",
+            timestamp:firebase.firestore.FieldValue.serverTimestamp()
+        });
+        await setInput('')
+        }
 
     return (
         <div className='feed'>
@@ -28,9 +58,9 @@ const [posts,setPosts] = useState([]);
                 <div className="feed__input">
                     <CreateIcon />
                     <form>
-                        <input className="" type="text" name="" id="" />
-                        <Button onClick={sendPost} type='Submit'>Send
-                        </Button>
+                        <input value={input} onChange={e=>setInput(e.target.value)} className="" type="text" name="" id="" />
+                        <button type="submit" onClick={sendPost}>Submit</button>
+
                     </form>
                 </div>
 
@@ -44,15 +74,19 @@ const [posts,setPosts] = useState([]);
                 </div>
             </div>
 
-
             {/* Posts */}
 
             {posts.map((post)=>{
-                <Post / >
+                return (
+                <Post 
+                key = {post.id}
+                name = {post.data.name}
+                description ={post.data.description}
+                message = {post.data.message}
+                photoUrl = {post.data.photoUrl}   
+                />)
             })}
-
-
-            <Post name='Soubhik Gon' message='This is a test' description='IIIT-Bh"26' />
+            
 
         </div>
     )

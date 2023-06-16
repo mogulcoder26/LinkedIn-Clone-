@@ -8,9 +8,12 @@ import ShareIcon from '@mui/icons-material/Share';
 import SendIcon from '@mui/icons-material/Send';
 function Post(props) {
     return (
+
         <div className='post'>
+        
             <div className="post__header">
-                <Avatar className='avatar' />
+        
+                <Avatar src={props.photoUrl} className='avatar' />
 
                 <div className="post__info">
 
