@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "../styles/Feed.css"
 import CreateIcon from '@mui/icons-material/Create'
-import Button from '@mui/material/Button';
 import InputOptions from './InputOptions';
 import ImageIcon from '@mui/icons-material/Image'
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions'
@@ -22,32 +21,31 @@ let [posts,setPosts] = useState([]);
 
 useEffect(()=>{
     //Creating a connection to Firebase DB ...we take a snapshot and on every snapshot we map through each doc to  `setPosts` for it to set our `posts` array 
-    db.collection("posts").onSnapshot((snapshot) =>{
+    db.collection("posts").orderBy("timestamp","desc").onSnapshot((snapshot) =>{
 
         setPosts(snapshot.docs.map(doc=>{
             return {
                 id:doc.id,
                 data:doc.data()
             }
-        }))
-    
+        })) 
 
     })
 
 },[])
 
 
-    const sendPost = async (e)=>{
+    const sendPost = (e)=>{
             e.preventDefault();
 
-       await  db.collection("posts").add({
+       db.collection("posts").add({
             name:'Soubhik Gon',
             description:'This is a test msg',
             message:input,
             photoUrl:"",
             timestamp:firebase.firestore.FieldValue.serverTimestamp()
         });
-        await setInput('')
+        setInput('')
         }
 
     return (

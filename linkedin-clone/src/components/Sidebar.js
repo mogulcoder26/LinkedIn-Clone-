@@ -1,9 +1,14 @@
 import React from 'react';
 import "../styles/Sidebar.css";
 import Avatar from '@mui/material/Avatar';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../features/userSlice';
 
 
 function Sidebar() {
+
+    const user = useSelector(selectUser);
+    
 
   const recentItem = (topic) => {
 

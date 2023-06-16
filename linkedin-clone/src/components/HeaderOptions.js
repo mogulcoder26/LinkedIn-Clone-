@@ -4,7 +4,7 @@ import Avatar from '@mui/material/Avatar';
 
 function HeaderOptions(props) {
   return (
-    <div className='headerOptions'>
+    <div onClick={props.logout} className='headerOptions'>
       {/* {props.Icon && <props.Icon className = 'headerOption__icon'/>}
        */}
        {props.Icon ? <props.Icon className='headerOption__icon' /> :<Avatar alt="Me" className='headerOption__icon' src={props.avatar} />}
