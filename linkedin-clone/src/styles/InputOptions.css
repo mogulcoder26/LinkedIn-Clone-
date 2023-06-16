@@ -5,13 +5,13 @@
     color: gray;
     padding: 10px;
     cursor: pointer;
-    
 }
 
 .inputOption{
     display: flex;
     justify-content: space-between;
     margin: 0 4px;
+    cursor: pointer;
 }
 
 .inputOption:hover{

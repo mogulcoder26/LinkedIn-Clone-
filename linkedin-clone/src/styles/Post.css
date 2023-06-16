@@ -3,6 +3,7 @@
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 10px;
+    transition: 0.5s;
 }
 .post__header > .avatar{
     background-color: cadetblue;

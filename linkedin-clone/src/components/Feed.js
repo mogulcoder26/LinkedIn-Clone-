@@ -81,7 +81,6 @@ useEffect(()=>{
             </div>
 
             {/* Posts */}
-
             {posts.map((post)=>{
                 return (
                 <Post 

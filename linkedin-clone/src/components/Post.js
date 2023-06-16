@@ -1,4 +1,4 @@
-import React from 'react'
+import React  from 'react'
 import "../styles/Post.css"
 import { Avatar } from '@mui/material'
 import InputOptions from './InputOptions'
@@ -8,7 +8,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import SendIcon from '@mui/icons-material/Send';
 
 
-function Post(props) {
+const Post = (props) => {
     return (
 
         <div className='post'>
@@ -29,7 +29,7 @@ function Post(props) {
                 </div>
 
                 <div className="post__buttons">
-                    <InputOptions Icon={ThumbUpIcon} title="Like" color
+                    <InputOptions altColor='blue' Icon={ThumbUpIcon} title="Like" color
                         ="gray"
                     />
                     <InputOptions Icon={CommentIcon} title="Comment" color
