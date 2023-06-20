@@ -1,13 +1,20 @@
-import React from 'react'
-import {Appbar , Toolbar } from '@mui/material';
-import
+import React from 'react';
+import { AppBar, Menu, Toolbar } from '@mui/material';
+import "../styles/Header.css";
+import WidgetsRoundedIcon from '@mui/icons-material/WidgetsRounded';
+import { gmailLogo } from "../constants/constant.js";
+
 
 function Header() {
   return (
-    <div>
-    <Appbar/>
-    <Toolbar/>
-    </div>
+    <AppBar className='appbar' >
+      <Toolbar >
+
+        {/* <MenuIcon /> */}
+        <WidgetsRoundedIcon />
+        <img className='logo' src={gmailLogo} alt="logo" />
+      </Toolbar>
+    </AppBar>
   )
 }
 
